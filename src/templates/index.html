@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiro Session Viewer</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🤖 Kiro Session Viewer</h1>
+            <button id="settings-btn" class="settings-btn" onclick="openSettings()" title="Settings">
+                ⚙️
+            </button>
+        </header>
+
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>⚙️ Settings</h2>
+                    <button class="close-btn" onclick="closeSettings()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label for="group-messages-toggle" class="setting-label">Group Assistant Messages</label>
+                            <p class="setting-description">Combine all assistant responses between user prompts into a single message</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="group-messages-toggle" onchange="toggleMessageGrouping()">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Sessions Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2>Sessions</h2>
+                    <span id="session-count" class="session-count">0</span>
+                </div>
+                <div id="session-list" class="session-list">
+                    <div class="loading">Loading sessions...</div>
+                </div>
+            </aside>
+
+            <!-- Session Content -->
+            <main class="content-area">
+                <div id="welcome-message" class="welcome-message">
+                    <div class="welcome-icon">💬</div>
+                    <h2>Welcome to Kiro Session Viewer</h2>
+                    <p>Select a session from the sidebar to view the conversation</p>
+                </div>
+
+                <div id="session-content" class="session-content hidden">
+                    <div class="session-header">
+                        <h2 id="session-title">Session</h2>
+                        <span id="session-info" class="session-info"></span>
+                    </div>
+                    <div id="messages-container" class="messages-container">
+                        <!-- Messages will be loaded here -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

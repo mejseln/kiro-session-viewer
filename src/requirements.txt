@@ -1,0 +1,4 @@
+# Kiro Session Viewer - Simple Flask Implementation
+# Minimal dependencies for the lightweight viewer
+
+Flask==3.0.0

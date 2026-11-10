@@ -1,0 +1,18 @@
+# Ignore everything by default
+*
+
+# Descend into directories so the files inside can be matched
+!*/
+
+# Ignore file
+!.gitignore
+
+# Project files
+!src/app.py
+!src/README.md
+!src/requirements.txt
+!src/run.sh
+
+# Folders
+!src/static/**
+!src/templates/**
