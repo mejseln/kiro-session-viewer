@@ -12,6 +12,7 @@
 !src/README.md
 !src/requirements.txt
 !src/run.sh
+!src/session_organizer.py
 
 # Folders
 !src/static/**
