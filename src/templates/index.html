@@ -11,10 +11,57 @@
         <!-- Header -->
         <header class="header">
             <h1>🤖 Kiro Session Viewer</h1>
-            <button id="settings-btn" class="settings-btn" onclick="openSettings()" title="Settings">
-                ⚙️
-            </button>
+            <div class="header-actions">
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        class="search-input" 
+                        placeholder="Search sessions..."
+                        onkeyup="handleSearchInput(event)"
+                    >
+                    <button class="search-btn" onclick="performSearch()" title="Search">
+                        🔍
+                    </button>
+                </div>
+                <button id="settings-btn" class="settings-btn" onclick="openSettings()" title="Settings">
+                    ⚙️
+                </button>
+            </div>
         </header>
+
+        <!-- Search Results Modal -->
+        <div id="search-modal" class="modal hidden">
+            <div class="modal-content search-results-modal">
+                <div class="modal-header">
+                    <h2>🔍 Search Results</h2>
+                    <button class="close-btn" onclick="closeSearch()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="search-results-container">
+                        <!-- Search results will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rename Modal -->
+        <div id="rename-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="rename-modal-title">Rename</h2>
+                    <button class="close-btn" onclick="closeRenameModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="rename-input" class="rename-input" placeholder="Enter new name">
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" onclick="closeRenameModal()">Cancel</button>
+                        <button id="reset-name-btn" class="btn btn-secondary" onclick="resetToDefaultName()" style="display: none;">Reset to Default</button>
+                        <button class="btn btn-primary" onclick="confirmRename()">Rename</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Settings Modal -->
         <div id="settings-modal" class="modal hidden">
@@ -44,8 +91,18 @@
             <aside class="sidebar">
                 <div class="sidebar-header">
                     <h2>Sessions</h2>
-                    <span id="session-count" class="session-count">0</span>
+                    <div class="sidebar-actions">
+                        <button class="icon-btn" onclick="createNewFolder()" title="New Folder">📁+</button>
+                        <span id="session-count" class="session-count">0</span>
+                    </div>
                 </div>
+                
+                <!-- Breadcrumb Navigation -->
+                <div id="folder-breadcrumb" class="folder-breadcrumb hidden">
+                    <!-- Breadcrumb will be rendered here -->
+                </div>
+                
+                <!-- Session/Folder List -->
                 <div id="session-list" class="session-list">
                     <div class="loading">Loading sessions...</div>
                 </div>
@@ -73,5 +130,6 @@
     </div>
 
     <script src="/static/js/app.js"></script>
+    <script src="/static/js/folders.js"></script>
 </body>
 </html>
